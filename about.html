@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me — Sarah Roberts</title>
+  <meta name="description" content="Design Lead turning insight into impact. Meet Sarah Roberts." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.in-view { opacity: 1; transform: translateY(0); }
+
+    .experience-list { margin-top: 40px; }
+    .experience-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .experience-item:last-child { border-bottom: none; }
+    .experience-period { font-size: 0.825rem; color: var(--ink-muted); line-height: 1.5; padding-top: 3px; }
+    .experience-role { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; margin-bottom: 6px; }
+    .experience-company { font-size: 0.875rem; color: var(--ink-muted); margin-bottom: 12px; }
+    .experience-desc { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; }
+    @media (max-width: 600px) {
+      .experience-item { grid-template-columns: 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+<body class="page-fade">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__links" style="order:-1">
+      <a href="projects.html">Craft &amp; Leadership</a>
+    </div>
+    <a href="index.html" class="nav__logo">Sarah Roberts</a>
+    <div class="nav__links">
+      <a href="about.html" style="color:var(--ink); font-weight:500">About Me</a>
+    </div>
+    <button class="nav__burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-overlay">
+    <a href="projects.html">Craft &amp; Leadership</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="about-hero__inner">
+        <div>
+          <span class="label">Hello there 👋</span>
+          <h1 class="display-xl" style="margin-top:16px">I'm Sarah,<br><em style="color:var(--ink-muted)">Design Lead</em></h1>
+          <p class="body-lg" style="margin-top:24px; max-width:480px">
+            I help businesses transform customer problems into effective product experiences. I lead with strategy, AI tools, and a deep belief that great design solves real problems quickly — without endless revisions or designer egos.
+          </p>
+          <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap">
+            <a href="mailto:hello@sarahlroberts.com" class="btn btn--dark">Say hello →</a>
+            <a href="projects.html" class="btn btn--outline">View my work</a>
+          </div>
+        </div>
+
+        <!-- REPLACE: about page hero portrait image -->
+        <div class="about-hero__image">
+          <img src="https://framerusercontent.com/images/uXXQiOOSxOoRGq04OocV8FTU94.png" alt="Sarah Roberts" loading="eager" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BIO -->
+  <section class="about-section section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+        <div class="fade-up">
+          <span class="label">Background</span>
+          <h2 class="display-md" style="margin-top:12px;margin-bottom:28px">The story so far</h2>
+          <p class="body-lg" style="margin-bottom:18px">
+            I'm a Design Lead based in New Zealand with experience spanning payroll tech, agri-tech, and fast-growing SaaS companies. My work sits at the intersection of research, strategy, and hands-on craft.
+          </p>
+          <p style="color:var(--ink-soft);line-height:1.8;margin-bottom:18px">
+            At Datapay — a payroll platform serving 1 in 6 New Zealanders — I lead a team of three product designers, driving JTBD-led discovery that connects customer insight to confident roadmap decisions. I introduced Outcome-Driven Innovation and AI-accelerated prototyping to our discovery process.
+          </p>
+          <p style="color:var(--ink-soft);line-height:1.8;margin-bottom:18px">
+            Before that, at FarmIQ, I led the redesign of an offline-first mobile app and built the design team operating system — including the design system, customer understanding framework, and team charter — from the ground up.
+          </p>
+          <p style="color:var(--ink-soft);line-height:1.8">
+            When I'm not behind my desk, you'll find me outdoors: tramping, running, riding my bike, or creating something with my hands.
+          </p>
+          <div style="font-size:1.4rem;letter-spacing:4px;margin-top:24px">🥾🚴‍♀️🦧🦇🐳⛰️</div>
+        </div>
+
+        <div>
+          <div class="bio-images">
+            <!-- REPLACE: about page lifestyle images -->
+            <div class="bio-img bio-img--main">
+              <img src="https://framerusercontent.com/images/x2dtfyxD69bGOZTSgF1a7HywQa4.png" alt="In a hut" loading="lazy" />
+              <span class="bio-img__caption">In a hut</span>
+            </div>
+            <div class="bio-img bio-img--sm">
+              <img src="https://framerusercontent.com/images/doEGFFP67jQoDOksaPnan3VNPA.png" alt="In the mountains" loading="lazy" />
+              <span class="bio-img__caption">In the mountains</span>
+            </div>
+            <div class="bio-img bio-img--sm">
+              <img src="https://framerusercontent.com/images/uXXQiOOSxOoRGq04OocV8FTU94.png" alt="Me looking fancy" loading="lazy" />
+              <span class="bio-img__caption">Hi! 👋</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="about-section about-section--alt section">
+    <div class="container fade-up">
+      <span class="label">Philosophy</span>
+      <h2 class="display-md" style="margin-top:12px;margin-bottom:8px">How I lead &amp; design</h2>
+      <p style="color:var(--ink-muted);max-width:480px;margin-bottom:40px">The principles I keep coming back to, again and again.</p>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-card__icon">🎯</div>
+          <h3 class="value-card__title">Clarity over complexity</h3>
+          <p class="value-card__text">The best design reduces cognitive load. For users and for teams. I make the problem, the principles, and the decision criteria unambiguous before anything else.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card__icon">🧭</div>
+          <h3 class="value-card__title">Evidence, not opinions</h3>
+          <p class="value-card__text">I use Jobs-To-Be-Done and Outcome-Driven Innovation to move from idea-led planning to opportunity-led discovery. Know what to build, why, and in what order.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card__icon">🤖</div>
+          <h3 class="value-card__title">AI as a multiplier</h3>
+          <p class="value-card__text">AI doesn't replace designers who think strategically — it sorts them. I model AI-first workflows openly and coach teams through the shift with honesty, not hype.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card__icon">🧱</div>
+          <h3 class="value-card__title">Systems over one-offs</h3>
+          <p class="value-card__text">Great outcomes should be repeatable. Charters, rituals, design systems, and contribution models mean teams can move fast without losing guardrails.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card__icon">🌱</div>
+          <h3 class="value-card__title">Grow people</h3>
+          <p class="value-card__text">I build psychological safety and shared expectations so teams thrive together. I share my own uncertainty and learning curve, rather than presenting false confidence.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-card__icon">🚢</div>
+          <h3 class="value-card__title">Ship, then learn</h3>
+          <p class="value-card__text">I believe in releasing real value, measuring it honestly, and iterating. De-risk with speed, not more planning — then use customer feedback to shape what's next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="about-section section">
+    <div class="container fade-up">
+      <span class="label">Experience</span>
+      <h2 class="display-md" style="margin-top:12px">Where I've worked</h2>
+
+      <div class="experience-list">
+        <div class="experience-item">
+          <span class="experience-period">2024 – Present</span>
+          <div>
+            <div class="experience-role">Research &amp; Design Lead</div>
+            <div class="experience-company">Datapay · Payroll SaaS · New Zealand</div>
+            <p class="experience-desc">Leading three product designers on a greenfield SaaS experience for a platform serving 1 in 6 New Zealanders. Driving JTBD-led discovery, ODI frameworks, AI-accelerated prototyping, and Customer Advisory Board validation.</p>
+          </div>
+        </div>
+        <div class="experience-item">
+          <span class="experience-period">2022 – 2024</span>
+          <div>
+            <div class="experience-role">Lead Product Designer</div>
+            <div class="experience-company">FarmIQ · Agri-tech SaaS · New Zealand</div>
+            <p class="experience-desc">Led redesign of mobile and web farm management platform. Built design team operating system including charter, design system, JTBD customer model, and in-product feedback loops. IQ app stickiness grew 17.45% YOY.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-section">
+    <div class="container">
+      <div class="skills-inner">
+        <div>
+          <span class="label">Capabilities</span>
+          <h2 class="display-md skills-title" style="margin-top:12px">What I bring to the table</h2>
+        </div>
+        <div class="skills-list">
+          <span class="skill-pill">🤖 AI Design Engineer</span>
+          <span class="skill-pill">🧩 System Thinking</span>
+          <span class="skill-pill">🙋‍♀️ Leading Discovery &amp; Process</span>
+          <span class="skill-pill">🎨 UI Craft</span>
+          <span class="skill-pill">✨ Product Design</span>
+          <span class="skill-pill">👤 UX Static &amp; Agentic</span>
+          <span class="skill-pill">💬 Customer Research</span>
+          <span class="skill-pill">🧭 Strategy</span>
+          <span class="skill-pill">✨ Growing &amp; Mentoring Teams</span>
+          <span class="skill-pill">🧱 Design Systems</span>
+          <span class="skill-pill">📊 Outcome-Driven Innovation</span>
+          <span class="skill-pill">🔭 Jobs-To-Be-Done</span>
+          <span class="skill-pill">🗂 Design Team Charters</span>
+          <span class="skill-pill">⚡ Rapid AI Prototyping</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-inner">
+        <span class="label" style="margin-bottom:16px;display:block">Get in touch</span>
+        <h2 class="display-md contact-title">Let's chat</h2>
+        <p class="contact-subtitle">I'd love to connect with you!</p>
+        <div class="contact-links">
+          <a href="mailto:hello@sarahlroberts.com" class="contact-link">
+            <span class="contact-link__label">Email</span>
+            <span class="contact-link__value">hello@sarahlroberts.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/sarah-roberts-6777a91a5/" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link__label">LinkedIn</span>
+            <span class="contact-link__value">linkedin.com/sarahroberts</span>
+          </a>
+          <a href="https://www.instagram.com/sarahlrobbo" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link__label">Instagram</span>
+            <span class="contact-link__value">@sarahlrobbo</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.html" class="footer__logo">Sarah Roberts</a>
+    <p class="footer__copy">© 2026 Sarah Roberts. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
