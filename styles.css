@@ -85,6 +85,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 400;
@@ -494,6 +498,8 @@ ul li, ol li {
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-8) var(--space-5);
   margin-top: var(--space-8);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Card container with hover scale */
@@ -1663,7 +1669,7 @@ ul li, ol li {
 
   .container,
   .container-narrow {
-    padding: 0 var(--space-5);
+    padding: 0 var(--space-6);
   }
 
   .project-body,
