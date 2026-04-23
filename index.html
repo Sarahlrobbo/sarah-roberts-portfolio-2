@@ -26,36 +26,39 @@
   </nav>
 
   <!-- ========== HERO ========== -->
-  <header class="hero container">
-    <span class="hero-eyebrow fade-in">Research &amp; Design Lead · Christchurch, NZ</span>
-    <h1 class="hero-title fade-in delay-1">
-      <em>Design Leader</em><br />
-      <span class="not-italic">shaping what we build</span>
-    </h1>
-    <p class="hero-subtitle fade-in delay-2">
-      Turning customer insight into strategy, and strategy into human-centred
-      products. Currently leading research &amp; design at Datapay.
-    </p>
-    <a href="#projects" class="hero-cta fade-in delay-3">See my work</a>
+  <header class="hero">
+    <div class="hero-polaroid-stage">
 
-    <!-- Hero image strip — homepage -->
-    <div class="hero-strip fade-in delay-4">
-      <div class="hero-strip-img">
-        <!-- REPLACE: hero image 1 (currently Artemis template image) -->
-        <img src="https://framerusercontent.com/images/NUTdkRLYEoKo3q0xaYuGtoBUg.jpg?width=1800&height=1423" alt="" loading="lazy" />
+      <!-- Scattered polaroid images -->
+      <div class="hero-polaroid p1 fade-in">
+        <!-- REPLACE: hero polaroid 1 — group / outdoors photo -->
+        <img src="https://framerusercontent.com/images/peS3xlMBI5nrAInAViMhLPV75E.jpg?width=1800&height=1423" alt="" />
       </div>
-      <div class="hero-strip-img">
-        <!-- REPLACE: hero image 2 -->
-        <img src="https://framerusercontent.com/images/v9by2y3t7Fgrb9sTYB57w099Lk.jpg?width=1800&height=1675" alt="" loading="lazy" />
+      <div class="hero-polaroid p2 fade-in delay-1">
+        <!-- REPLACE: hero polaroid 2 — design/working shot -->
+        <img src="https://framerusercontent.com/images/v9by2y3t7Fgrb9sTYB57w099Lk.jpg?width=1800&height=1675" alt="" />
       </div>
-      <div class="hero-strip-img">
-        <!-- REPLACE: hero image 3 -->
-        <img src="https://framerusercontent.com/images/GfQF9MJTOQgip3GZt7WYQlFA.png?width=1440&height=1440" alt="" loading="lazy" />
+      <div class="hero-polaroid p3 fade-in delay-2">
+        <!-- REPLACE: hero polaroid 3 — sketch / craft photo -->
+        <img src="https://framerusercontent.com/images/sOV9oVng8G6eTcJz9mcCnJarYGE.jpg?width=1500&height=2100" alt="" />
       </div>
-      <div class="hero-strip-img">
-        <!-- REPLACE: hero image 4 -->
-        <img src="https://framerusercontent.com/images/sOV9oVng8G6eTcJz9mcCnJarYGE.jpg?width=1500&height=2100" alt="" loading="lazy" />
+      <div class="hero-polaroid p4 fade-in delay-3">
+        <!-- REPLACE: hero polaroid 4 — product / FigJam shot -->
+        <img src="https://framerusercontent.com/images/40YISsvwSJc4RxvqVYZATAMwlM.jpg?width=1800&height=1483" alt="" />
       </div>
+
+      <!-- Centred hero content -->
+      <div class="hero-polaroid-content">
+        <h1 class="hero-title fade-in delay-1">
+          <em>Design Lead</em><br />
+          <em>Insight to impact</em>
+        </h1>
+        <p class="hero-subtitle fade-in delay-2">
+          Leading teams hands-on with strategy, AI tools and system thinking.
+        </p>
+        <a href="#projects" class="hero-cta fade-in delay-3">View my craft</a>
+      </div>
+
     </div>
   </header>
 
@@ -90,8 +93,10 @@
   <!-- ========== SNEAK PEEK GALLERY ========== -->
   <section class="sneak-peek container">
     <div class="section-heading">
-      <span class="section-label">This is Sarah</span>
-      <h2 class="section-title">A sneak peek of my work</h2>
+      <div class="section-illustration">
+        <img src="images/Illustration-SneakPeek.svg" alt="" />
+      </div>
+      <h2 class="section-title"><em>Sneak peak of my craft &amp; leadership</em></h2>
     </div>
 
     <div class="sneak-grid">
@@ -129,104 +134,124 @@
   <!-- ========== PROJECT CARDS GRID ========== -->
   <section id="projects" class="section container">
     <div class="section-heading">
-      <span class="section-label">Selected Projects</span>
-      <h2 class="section-title">Design in action</h2>
+      <h2 class="section-title"><em>Design in action</em></h2>
       <p class="section-sub">
-        Leading research and design through change, complexity, and the shift to AI-led delivery.
+        Creating intuitive solutions for internal stakeholders &amp; customers.
       </p>
     </div>
 
+    <!-- Filter pills -->
+    <ul class="filter-pills" role="tablist">
+      <li><button class="filter-pill active" data-filter="all">All</button></li>
+      <li><button class="filter-pill" data-filter="leadership">Leadership</button></li>
+      <li><button class="filter-pill" data-filter="jtbd">JTBD</button></li>
+      <li><button class="filter-pill" data-filter="research">Research</button></li>
+      <li><button class="filter-pill" data-filter="ux-ui">UX &amp; UI</button></li>
+      <li><button class="filter-pill" data-filter="strategy">Strategy</button></li>
+    </ul>
+
     <div class="projects-grid">
       <!-- Project 1 — Age of AI -->
-      <a href="project-age-of-ai.html" class="project-card">
+      <a href="project-age-of-ai.html" class="project-card" data-categories="jtbd research strategy leadership">
         <div class="project-card-img">
           <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/5c2c4aa4-9a59-4ed6-b408-11c5ec68a7d6_rwc_0x0x2558x1826x32.png?h=32cc5b8d3894677b89a6c0973819c73d" alt="Datapay — Knowing What to Build in the Age of AI" loading="lazy" />
         </div>
         <div class="project-card-body">
-          <span class="project-card-tag">Research &amp; Design Lead · Datapay</span>
-          <h3 class="project-card-title">Knowing What to Build in the Age of AI</h3>
+          <h3 class="project-card-title">Knowing what to build in the age of AI</h3>
           <p class="project-card-desc">
-            Reframed discovery at Datapay by introducing Jobs-To-Be-Done and Outcome-Driven Innovation, turning 300+ feature requests into an evidence-based roadmap grounded in real customer needs.
+            Datapay had 300+ competing feature ideas and no consistent way to prioritise them. I reframed discovery around Jobs-to-Be-Done and Outcome-Driven Innovation, turning opinion-led planning into evidence-based roadmap decisions.
           </p>
-          <span class="project-card-link">Read case study</span>
+          <div class="project-card-tags">
+            <span class="tag">JTBD</span>
+            <span class="tag">Strategy</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Research</span>
+          </div>
         </div>
       </a>
 
       <!-- Project 2 — Farmers -->
-      <a href="project-farmers.html" class="project-card">
+      <a href="project-farmers.html" class="project-card" data-categories="ux-ui leadership research">
         <div class="project-card-img">
-          <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/2f72e163-09ee-4728-ba26-105af080f291_carw_7x5x32.jpg?h=7ba3f9d30d4fddf5eb66993b5e1f87cf" alt="FarmIQ — Helping Farmers Thrive" loading="lazy" />
+          <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/2f72e163-09ee-4728-ba26-105af080f291_carw_7x5x32.jpg?h=7ba3f9d30d4fddf5eb66993b5e1f87cf" alt="FarmIQ — The farm at your fingertips" loading="lazy" />
         </div>
         <div class="project-card-body">
-          <span class="project-card-tag">Lead Product Designer · FarmIQ</span>
-          <h3 class="project-card-title">Helping Farmers Thrive: Creating Their Essential App</h3>
+          <h3 class="project-card-title">The farm at your fingertips</h3>
           <p class="project-card-desc">
-            Led the redesign of FarmIQ's offline-first mobile app, simplifying on-farm workflows and giving farmers their farm at their fingertips, even when connectivity, weather, or time were against them.
+            Led the redesign of FarmIQ's offline-first mobile app, simplifying on-farm workflows and giving farmers their farm at their fingertips — even when connectivity, weather, or time were against them.
           </p>
-          <span class="project-card-link">Read case study</span>
+          <div class="project-card-tags">
+            <span class="tag">UX &amp; UI</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Research</span>
+          </div>
         </div>
       </a>
 
       <!-- Project 3 — Design Practice -->
-      <a href="project-design-practice.html" class="project-card">
+      <a href="project-design-practice.html" class="project-card" data-categories="leadership strategy ux-ui">
         <div class="project-card-img">
           <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/5fded901-a700-451b-836a-5958e126cbd9_rwc_0x0x1920x1370x32.jpg?h=db9a32af269343b2a6ccccbd85505399" alt="FarmIQ — Growing the Design Team, Practice & Systems" loading="lazy" />
         </div>
         <div class="project-card-body">
-          <span class="project-card-tag">Lead Product Designer · FarmIQ</span>
-          <h3 class="project-card-title">Growing FarmIQ's Design Team, Practice &amp; Systems</h3>
+          <h3 class="project-card-title">Growing a design team that scales</h3>
           <p class="project-card-desc">
-            Shifted FarmIQ from ad-hoc design and fragmented UI to a repeatable operating model and multi-platform design system, grounded in real farmer roles and jobs-to-be-done.
+            Shifted FarmIQ from ad-hoc design and fragmented UI to a repeatable operating model and multi-platform design system — grounded in real farmer roles and jobs-to-be-done.
           </p>
-          <span class="project-card-link">Read case study</span>
+          <div class="project-card-tags">
+            <span class="tag">Leadership</span>
+            <span class="tag">Strategy</span>
+            <span class="tag">UX &amp; UI</span>
+          </div>
         </div>
       </a>
 
       <!-- Project 4 — Design Leadership -->
-      <a href="project-design-leadership.html" class="project-card">
+      <a href="project-design-leadership.html" class="project-card" data-categories="leadership strategy">
         <div class="project-card-img">
           <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/193f0258-ab4f-48c1-b7f4-7f2498030c58_carw_7x5x32.png?h=3e8bcc5e589bb1b9ce7b025f7554b9d8" alt="Design Leadership & Strategy" loading="lazy" />
         </div>
         <div class="project-card-body">
-          <span class="project-card-tag">Design Leadership · Datapay &amp; FarmIQ</span>
-          <h3 class="project-card-title">Design Leadership &amp; Strategy</h3>
+          <h3 class="project-card-title">Design leadership &amp; strategy</h3>
           <p class="project-card-desc">
-            Leading with clarity and strategy — aligning cross-functional partners, subject-matter experts, and design teams around a shared direction, then operationalising the ways of working that let people do their best work.
+            Leading with clarity and strategy — aligning cross-functional partners, SMEs, and design teams around a shared direction, then operationalising the ways of working that let people do their best work.
           </p>
-          <span class="project-card-link">Read case study</span>
+          <div class="project-card-tags">
+            <span class="tag">Leadership</span>
+            <span class="tag">Strategy</span>
+          </div>
         </div>
       </a>
     </div>
   </section>
 
-  <!-- ========== SKILLS ========== -->
-  <section class="skills">
+  <!-- ========== LEADERSHIP IMPACT AREAS ========== -->
+  <section class="impact-areas">
     <div class="container">
-      <div class="section-heading">
-        <span class="section-label">What I bring</span>
-        <h2 class="section-title">Leadership, research, and craft</h2>
-        <p class="section-sub">
-          Digital experiences that reduce cognitive load, earn customer trust, and help teams deliver with confidence.
-        </p>
-      </div>
+      <div class="impact-stage">
 
-      <ul class="skills-list">
-        <li>Design Leadership</li>
-        <li>Jobs-To-Be-Done</li>
-        <li>Outcome-Driven Innovation</li>
-        <li>Product Discovery</li>
-        <li>Customer Research</li>
-        <li>Design Systems</li>
-        <li>Service Design</li>
-        <li>Workshop Facilitation</li>
-        <li>Design Sprints</li>
-        <li>WCAG Accessibility</li>
-        <li>Systems Thinking</li>
-        <li>AI-Led Delivery</li>
-        <li>Agile Collaboration</li>
-        <li>Brand Identity</li>
-        <li>Illustration</li>
-      </ul>
+        <!-- Floating labels -->
+        <span class="impact-label il1">💡 Product Design</span>
+        <span class="impact-label il2">📐 UX Static &amp; Agentic</span>
+        <span class="impact-label il3">✏️ UI Craft</span>
+        <span class="impact-label il4">🧩 System Thinking</span>
+        <span class="impact-label il5">🤖 AI Design Engineer</span>
+        <span class="impact-label il6">🔍🧪 Leading Discovery &amp; Process</span>
+        <span class="impact-label il7">🌱 Growing &amp; Mentoring Team</span>
+        <span class="impact-label il8">🎯 Strategy</span>
+        <span class="impact-label il9">🧑‍🤝‍🧑 Customer Research</span>
+        <span class="impact-label il10">🛠️ Design Systems</span>
+
+        <!-- Central illustration and title -->
+        <div class="impact-center">
+          <img src="images/Illustration-LeadershipImpactAreas.svg" alt="" class="impact-illustration" />
+          <h2 class="section-title"><em>Leadership<br />Impact Areas</em></h2>
+          <p class="section-sub">
+            Reduce complexity in teams &amp; cognitive load for users in every digital experience I lead.
+          </p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -367,7 +392,10 @@
 
   <!-- ========== CONTACT ========== -->
   <section class="contact container" id="contact">
-    <h2 class="contact-title"><em>Let's build something</em><br />meaningful together.</h2>
+    <div class="section-illustration">
+      <img src="images/Illustration-LetsChat.svg" alt="" />
+    </div>
+    <h2 class="contact-title"><em>Let's chat</em></h2>
     <p class="contact-sub">I'd love to connect with you.</p>
 
     <div class="contact-links">
@@ -377,15 +405,11 @@
       </a>
       <a href="https://www.linkedin.com/in/sarahlroberts-christchurch/" class="contact-link" target="_blank" rel="noopener">
         <span class="contact-link-label">LinkedIn</span>
-        <span class="contact-link-value">sarahlroberts</span>
+        <span class="contact-link-value">linkedin.com/sarahlroberts</span>
       </a>
-      <a href="https://sarahlroberts.com" class="contact-link" target="_blank" rel="noopener">
-        <span class="contact-link-label">Website</span>
-        <span class="contact-link-value">sarahlroberts.com</span>
-      </a>
-      <a href="#" class="contact-link">
-        <span class="contact-link-label">Location</span>
-        <span class="contact-link-value">Christchurch, NZ</span>
+      <a href="https://www.instagram.com/sarahlrobbo/" class="contact-link" target="_blank" rel="noopener">
+        <span class="contact-link-label">Instagram</span>
+        <span class="contact-link-value">instagram.com/sarahlrobbo</span>
       </a>
     </div>
   </section>
@@ -397,6 +421,32 @@
       <span>© 2026 · Designed with care in Aotearoa</span>
     </div>
   </footer>
+
+  <!-- Filter pills script -->
+  <script>
+    (function() {
+      const pills = document.querySelectorAll('.filter-pill');
+      const cards = document.querySelectorAll('.project-card');
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          const filter = pill.getAttribute('data-filter');
+
+          pills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+
+          cards.forEach(card => {
+            const cats = (card.getAttribute('data-categories') || '').split(' ');
+            if (filter === 'all' || cats.includes(filter)) {
+              card.removeAttribute('data-hidden');
+            } else {
+              card.setAttribute('data-hidden', 'true');
+            }
+          });
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>

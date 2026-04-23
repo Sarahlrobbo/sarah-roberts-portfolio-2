@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects — Sarah Roberts</title>
-  <meta name="description" content="Selected case studies from Sarah Roberts — leading research and design through change, complexity, and the shift to AI-led delivery." />
+  <title>Craft &amp; Leadership — Sarah Roberts</title>
+  <meta name="description" content="Recent projects from concept to launch — projects that helped grow teams, scale design, and build on success." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -26,74 +26,100 @@
 
   <section class="projects-listing container">
     <div class="projects-listing-header">
-      <span class="section-label fade-in">Craft &amp; Leadership</span>
-      <h1 class="fade-in delay-1"><em>Selected</em> projects</h1>
-      <p class="projects-listing-sub fade-in delay-2">
-        Leading research and design through change, complexity, and the shift to AI-led delivery.
+      <h1 class="fade-in"><em>Craft &amp; Leadership</em></h1>
+      <p class="projects-listing-sub fade-in delay-1">
+        Recent projects from concept to launch — projects that helped grow teams, scale design, and build on success.
       </p>
     </div>
 
+    <!-- Filter pills -->
+    <ul class="filter-pills" role="tablist">
+      <li><button class="filter-pill active" data-filter="all">All</button></li>
+      <li><button class="filter-pill" data-filter="leadership">Leadership</button></li>
+      <li><button class="filter-pill" data-filter="jtbd">JTBD</button></li>
+      <li><button class="filter-pill" data-filter="research">Research</button></li>
+      <li><button class="filter-pill" data-filter="ux-ui">UX &amp; UI</button></li>
+      <li><button class="filter-pill" data-filter="strategy">Strategy</button></li>
+    </ul>
+
     <div class="projects-grid">
-      <a href="project-age-of-ai.html" class="project-card">
+
+      <a href="project-age-of-ai.html" class="project-card" data-categories="jtbd research strategy leadership">
         <div class="project-card-img">
           <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/5c2c4aa4-9a59-4ed6-b408-11c5ec68a7d6_rwc_0x0x2558x1826x32.png?h=32cc5b8d3894677b89a6c0973819c73d" alt="Datapay — Knowing What to Build in the Age of AI" loading="lazy" />
         </div>
         <div class="project-card-body">
-          <span class="project-card-tag">Research &amp; Design Lead · Datapay</span>
-          <h3 class="project-card-title">Knowing What to Build in the Age of AI</h3>
+          <h3 class="project-card-title">Knowing what to build in the age of AI</h3>
           <p class="project-card-desc">
-            Reframed discovery at Datapay by introducing Jobs-To-Be-Done and Outcome-Driven Innovation, turning 300+ feature requests into an evidence-based roadmap grounded in real customer needs.
+            Datapay had 300+ competing feature ideas and no consistent way to prioritise them. I reframed discovery around Jobs-to-Be-Done and Outcome-Driven Innovation, turning opinion-led planning into evidence-based roadmap decisions.
           </p>
-          <span class="project-card-link">Read case study</span>
+          <div class="project-card-tags">
+            <span class="tag">JTBD</span>
+            <span class="tag">Strategy</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Research</span>
+          </div>
         </div>
       </a>
 
-      <a href="project-farmers.html" class="project-card">
+      <a href="project-farmers.html" class="project-card" data-categories="ux-ui leadership research">
         <div class="project-card-img">
-          <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/2f72e163-09ee-4728-ba26-105af080f291_carw_7x5x32.jpg?h=7ba3f9d30d4fddf5eb66993b5e1f87cf" alt="FarmIQ — Helping Farmers Thrive" loading="lazy" />
+          <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/2f72e163-09ee-4728-ba26-105af080f291_carw_7x5x32.jpg?h=7ba3f9d30d4fddf5eb66993b5e1f87cf" alt="FarmIQ — The farm at your fingertips" loading="lazy" />
         </div>
         <div class="project-card-body">
-          <span class="project-card-tag">Lead Product Designer · FarmIQ</span>
-          <h3 class="project-card-title">Helping Farmers Thrive: Creating Their Essential App</h3>
+          <h3 class="project-card-title">The farm at your fingertips</h3>
           <p class="project-card-desc">
-            Led the redesign of FarmIQ's offline-first mobile app — simplifying on-farm workflows and giving farmers their farm at their fingertips, even when connectivity, weather, or time were against them.
+            Led the redesign of FarmIQ's offline-first mobile app, simplifying on-farm workflows and giving farmers their farm at their fingertips — even when connectivity, weather, or time were against them.
           </p>
-          <span class="project-card-link">Read case study</span>
+          <div class="project-card-tags">
+            <span class="tag">UX &amp; UI</span>
+            <span class="tag">Leadership</span>
+            <span class="tag">Research</span>
+          </div>
         </div>
       </a>
 
-      <a href="project-design-practice.html" class="project-card">
+      <a href="project-design-practice.html" class="project-card" data-categories="leadership strategy ux-ui">
         <div class="project-card-img">
           <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/5fded901-a700-451b-836a-5958e126cbd9_rwc_0x0x1920x1370x32.jpg?h=db9a32af269343b2a6ccccbd85505399" alt="FarmIQ — Growing the Design Team, Practice & Systems" loading="lazy" />
         </div>
         <div class="project-card-body">
-          <span class="project-card-tag">Lead Product Designer · FarmIQ</span>
-          <h3 class="project-card-title">Growing FarmIQ's Design Team, Practice &amp; Systems</h3>
+          <h3 class="project-card-title">Growing a design team that scales</h3>
           <p class="project-card-desc">
-            Shifted FarmIQ from ad-hoc design and fragmented UI to a repeatable operating model and multi-platform design system, grounded in real farmer roles and jobs-to-be-done.
+            Shifted FarmIQ from ad-hoc design and fragmented UI to a repeatable operating model and multi-platform design system — grounded in real farmer roles and jobs-to-be-done.
           </p>
-          <span class="project-card-link">Read case study</span>
+          <div class="project-card-tags">
+            <span class="tag">Leadership</span>
+            <span class="tag">Strategy</span>
+            <span class="tag">UX &amp; UI</span>
+          </div>
         </div>
       </a>
 
-      <a href="project-design-leadership.html" class="project-card">
+      <a href="project-design-leadership.html" class="project-card" data-categories="leadership strategy">
         <div class="project-card-img">
           <img src="https://cdn.myportfolio.com/9fc95780-2163-4165-a0bd-2514488512ff/193f0258-ab4f-48c1-b7f4-7f2498030c58_carw_7x5x32.png?h=3e8bcc5e589bb1b9ce7b025f7554b9d8" alt="Design Leadership & Strategy" loading="lazy" />
         </div>
         <div class="project-card-body">
-          <span class="project-card-tag">Design Leadership · Datapay &amp; FarmIQ</span>
-          <h3 class="project-card-title">Design Leadership &amp; Strategy</h3>
+          <h3 class="project-card-title">Design leadership &amp; strategy</h3>
           <p class="project-card-desc">
-            Leading with clarity and strategy — aligning cross-functional partners, subject-matter experts, and design teams around a shared direction, then operationalising the ways of working.
+            Leading with clarity and strategy — aligning cross-functional partners, SMEs, and design teams around a shared direction, then operationalising the ways of working that let people do their best work.
           </p>
-          <span class="project-card-link">Read case study</span>
+          <div class="project-card-tags">
+            <span class="tag">Leadership</span>
+            <span class="tag">Strategy</span>
+          </div>
         </div>
       </a>
+
     </div>
   </section>
 
   <section class="contact container">
-    <h2 class="contact-title"><em>Let's build something</em><br />meaningful together.</h2>
+    <div class="section-illustration">
+      <img src="images/Illustration-LetsChat.svg" alt="" />
+    </div>
+    <h2 class="contact-title"><em>Let's chat</em></h2>
     <p class="contact-sub">I'd love to connect with you.</p>
 
     <div class="contact-links">
@@ -103,15 +129,11 @@
       </a>
       <a href="https://www.linkedin.com/in/sarahlroberts-christchurch/" class="contact-link" target="_blank" rel="noopener">
         <span class="contact-link-label">LinkedIn</span>
-        <span class="contact-link-value">sarahlroberts</span>
+        <span class="contact-link-value">linkedin.com/sarahlroberts</span>
       </a>
-      <a href="https://sarahlroberts.com" class="contact-link" target="_blank" rel="noopener">
-        <span class="contact-link-label">Website</span>
-        <span class="contact-link-value">sarahlroberts.com</span>
-      </a>
-      <a href="#" class="contact-link">
-        <span class="contact-link-label">Location</span>
-        <span class="contact-link-value">Christchurch, NZ</span>
+      <a href="https://www.instagram.com/sarahlrobbo/" class="contact-link" target="_blank" rel="noopener">
+        <span class="contact-link-label">Instagram</span>
+        <span class="contact-link-value">instagram.com/sarahlrobbo</span>
       </a>
     </div>
   </section>
@@ -122,6 +144,32 @@
       <span>© 2026 · Designed with care in Aotearoa</span>
     </div>
   </footer>
+
+  <!-- Filter pills script -->
+  <script>
+    (function() {
+      const pills = document.querySelectorAll('.filter-pill');
+      const cards = document.querySelectorAll('.project-card');
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          const filter = pill.getAttribute('data-filter');
+
+          pills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+
+          cards.forEach(card => {
+            const cats = (card.getAttribute('data-categories') || '').split(' ');
+            if (filter === 'all' || cats.includes(filter)) {
+              card.removeAttribute('data-hidden');
+            } else {
+              card.setAttribute('data-hidden', 'true');
+            }
+          });
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
