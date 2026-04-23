@@ -516,7 +516,7 @@ ul li, ol li {
 
 .project-card:hover {
   opacity: 1;
-  transform: translateY(-6px) scale(1.015);
+  transform: translateY(-6px);
   box-shadow: 0 24px 50px -20px rgba(42, 49, 50, 0.18);
 }
 
