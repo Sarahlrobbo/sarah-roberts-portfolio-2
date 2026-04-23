@@ -422,7 +422,7 @@
     </div>
   </footer>
 
-  <!-- Filter pills script -->
+  <!-- Filter pills + impact-area scroll animation -->
   <script>
     (function() {
       const pills = document.querySelectorAll('.filter-pill');
@@ -445,6 +445,22 @@
           });
         });
       });
+
+      // Reveal impact labels on scroll
+      const labels = document.querySelectorAll('.impact-label');
+      if ('IntersectionObserver' in window && labels.length) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        labels.forEach(l => io.observe(l));
+      } else {
+        labels.forEach(l => l.classList.add('in-view'));
+      }
     })();
   </script>
 
