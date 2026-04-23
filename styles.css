@@ -175,9 +175,7 @@ ul li, ol li {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(244, 239, 230, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
 }
 
