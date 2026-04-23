@@ -1226,17 +1226,24 @@ ul li, ol li {
   background: #B8CCFB;
 }
 
-/* Scattered positions + unique tilts matching Framer design */
-.impact-label.il1  { top: 4%;   left: 42%; --tilt: -3deg; }
-.impact-label.il2  { top: 16%;  right: 4%; --tilt: 6deg;  }
-.impact-label.il3  { top: 38%;  right: 2%; --tilt: -4deg; }
-.impact-label.il4  { top: 54%;  right: 6%; --tilt: 7deg;  }
-.impact-label.il5  { bottom: 22%; right: 18%; --tilt: -5deg; }
-.impact-label.il6  { bottom: 8%;  right: 2%; --tilt: 4deg;  }
-.impact-label.il7  { bottom: 14%; left: 6%; --tilt: -6deg; }
-.impact-label.il8  { top: 54%;  left: 4%;  --tilt: 5deg;  }
-.impact-label.il9  { top: 32%;  left: 2%;  --tilt: -7deg; }
-.impact-label.il10 { top: 14%;  left: 6%;  --tilt: 4deg;  }
+/* Scattered positions forming a circle around the centre + unique tilts */
+/* Top row */
+.impact-label.il10 { top: 4%;   left: 18%;  --tilt: 4deg;  } /* Design Systems — top-left */
+.impact-label.il1  { top: 0%;   left: 46%;  --tilt: -3deg; } /* Product Design — top-centre */
+.impact-label.il2  { top: 4%;   right: 14%; --tilt: 6deg;  } /* UX Static & Agentic — top-right */
+
+/* Upper sides */
+.impact-label.il9  { top: 30%;  left: 4%;   --tilt: -7deg; } /* Customer Research — left */
+.impact-label.il3  { top: 30%;  right: 4%;  --tilt: -4deg; } /* UI Craft — right */
+
+/* Lower sides */
+.impact-label.il8  { top: 58%;  left: 8%;   --tilt: 5deg;  } /* Strategy — left */
+.impact-label.il4  { top: 58%;  right: 4%;  --tilt: 7deg;  } /* System Thinking — right */
+
+/* Bottom row */
+.impact-label.il7  { bottom: 6%;  left: 16%;  --tilt: -6deg; } /* Growing & Mentoring — bottom-left */
+.impact-label.il5  { bottom: 0%;  left: 42%;  --tilt: -5deg; } /* AI Design Engineer — bottom-centre */
+.impact-label.il6  { bottom: 6%;  right: 6%;  --tilt: 4deg;  } /* Leading Discovery — bottom-right */
 
 /* Staggered animation delays */
 .impact-label.il1.in-view  { transition-delay: 0.05s; }
