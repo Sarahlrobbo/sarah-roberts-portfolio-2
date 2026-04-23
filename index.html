@@ -13,14 +13,15 @@
        TOKENS
     ============================================= */
     :root {
-      --cream:      #F0EDE6;
-      --cream-dark: #E8E4DB;
+      --cream:      #F2F2F2;
+      --cream-dark: #E8E8E8;
+      --secondary:  #2A3132;
       --ink:        #001666;
       --brand:      #2B35AB;
       --ink-soft:   #001666cc;
       --ink-muted:  #00166699;
       --border:     rgba(0,22,102,0.12);
-      --white:      #FAFAF8;
+      --white:      #FFFFFF;
 
       --font-serif: 'Libre Baskerville', Georgia, serif;
       --font-body:  'DM Sans', system-ui, sans-serif;
@@ -54,7 +55,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 48px;
-      background: rgba(240,237,230,0.88);
+      background: rgba(242,242,242,0.88);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -62,15 +63,28 @@
       font-family: var(--font-body);
       font-size: 0.875rem;
       font-weight: 400;
-      color: var(--ink);
-      transition: opacity 0.2s;
+      color: #111111;
+      transition: color 0.2s;
+      position: relative;
+      padding-bottom: 2px;
     }
-    .nav__link:hover { opacity: 0.6; }
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 1.5px;
+      background: var(--brand);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav__link:hover { color: var(--brand); }
+    .nav__link:hover::after { transform: scaleX(1); }
     .nav__logo {
       font-family: var(--font-body);
       font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--brand);
+      font-weight: 700;
+      color: #111111;
       letter-spacing: 0.01em;
     }
     .nav__burger {
@@ -131,6 +145,8 @@
       color: var(--ink);
       margin-bottom: 20px;
     }
+    .hero__title .line1 { color: var(--brand); display: block; }
+    .hero__title .line2 { color: var(--secondary); display: block; }
     .hero__sub {
       font-family: var(--font-body);
       font-size: 1rem;
@@ -178,39 +194,29 @@
     }
     /* Positions matching Figma layout */
     .float-img--1 {
-      width: clamp(130px, 13vw, 200px);
+      width: clamp(160px, 17vw, 260px);
       aspect-ratio: 3/4;
-      top: 12%; right: 28%;
-      transform: rotate(-6deg);
+      top: 10%; right: 22%;
+      transform: rotate(-5deg);
       animation: floatA 6s ease-in-out infinite alternate;
+      z-index: 2;
     }
     .float-img--2 {
-      width: clamp(140px, 15vw, 220px);
+      width: clamp(180px, 19vw, 290px);
       aspect-ratio: 4/3;
-      top: 8%; right: 8%;
-      transform: rotate(5deg);
+      top: 6%; right: 4%;
+      transform: rotate(4deg);
       animation: floatB 7s ease-in-out infinite alternate;
+      z-index: 1;
     }
     .float-img--3 {
-      width: clamp(110px, 11vw, 170px);
-      aspect-ratio: 1/1;
-      bottom: 20%; right: 24%;
-      transform: rotate(3deg);
-      animation: floatC 5.5s ease-in-out infinite alternate;
-    }
-    .float-img--4 {
-      width: clamp(120px, 12vw, 185px);
-      aspect-ratio: 3/4;
-      bottom: 10%; right: 6%;
-      transform: rotate(-4deg);
-      animation: floatA 8s ease-in-out infinite alternate;
-    }
-    .float-img--5 {
-      width: clamp(90px, 9vw, 140px);
+      /* Third image - bottom right overlap */
+      width: clamp(140px, 14vw, 210px);
       aspect-ratio: 4/3;
-      top: 50%; right: 40%;
-      transform: rotate(2deg);
-      animation: floatB 9s ease-in-out infinite alternate;
+      bottom: 8%; right: 5%;
+      transform: rotate(4deg);
+      animation: floatC 6s ease-in-out infinite alternate;
+      z-index: 3;
     }
 
     @keyframes floatA {
@@ -222,46 +228,21 @@
       to   { transform: rotate(3deg) translateY(-22px); }
     }
     @keyframes floatC {
-      from { transform: rotate(3deg) translateY(0px); }
-      to   { transform: rotate(5deg) translateY(-14px); }
+      from { transform: rotate(4deg) translateY(0px); }
+      to   { transform: rotate(6deg) translateY(-16px); }
     }
 
-    /* =============================================
-       MARQUEE
-    ============================================= */
-    .marquee-wrap {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
-      overflow: hidden;
-      background: var(--cream);
+    /* Entrance animation on load */
+    .float-img {
+      opacity: 0;
+      transition: opacity 0.6s ease;
     }
-    .marquee-track {
-      display: flex;
-      gap: 32px;
-      width: max-content;
-      animation: marquee 30s linear infinite;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
-    .marquee-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      white-space: nowrap;
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: var(--ink-soft);
-    }
-    .marquee-item .sep {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--brand);
-      opacity: 0.4;
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
+    .float-img.entered { opacity: 1; }
+    .float-img--1 { transition-delay: 0.15s; }
+    .float-img--2 { transition-delay: 0.3s; }
+    .float-img--3 { transition-delay: 0.45s; }
+
+    /* MARQUEE REMOVED */
 
     /* =============================================
        SNEAK PEEK
@@ -269,15 +250,28 @@
     .sneak {
       padding: 80px 0;
     }
-    .sneak__label {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
+    .sneak__illus-wrap {
       text-align: center;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .sneak__illus {
+      width: 120px;
+      height: 120px;
+      display: inline-block;
+    }
+    /* Animate the illustration - wand hand bobs up/down, squiggles wiggle */
+    .sneak__illus svg {
+      animation: none;
+    }
+    .sneak__illus-inner {
+      animation: wandBob 2.5s ease-in-out infinite;
+      transform-origin: center bottom;
+      display: inline-block;
+    }
+    @keyframes wandBob {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      30%  { transform: translateY(-10px) rotate(-3deg); }
+      70%  { transform: translateY(-6px) rotate(2deg); }
     }
     .sneak__title {
       font-family: var(--font-serif);
@@ -867,42 +861,21 @@
 
     <div class="hero__content">
       <h1 class="hero__title">Design Lead<br>Insight to impact</h1>
-      <p class="hero__sub">Leading teams hands-on with strategy, AI tools and system thinking.</p>
+      <p class="hero__sub">Turning research, strategy and AI tools into outcomes that matter — hands-on leadership from insight to impact.</p>
       <a href="projects.html" class="btn-primary">View my craft →</a>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-item">🤖 AI Design Engineer <span class="sep"></span></span>
-      <span class="marquee-item">🧩 System Thinking <span class="sep"></span></span>
-      <span class="marquee-item">🙋‍♀️ Leading Discovery &amp; Process <span class="sep"></span></span>
-      <span class="marquee-item">🎨 UI Craft <span class="sep"></span></span>
-      <span class="marquee-item">✨ Product Design <span class="sep"></span></span>
-      <span class="marquee-item">👤 UX Static &amp; Agentic <span class="sep"></span></span>
-      <span class="marquee-item">💬 Customer Research <span class="sep"></span></span>
-      <span class="marquee-item">🧭 Strategy <span class="sep"></span></span>
-      <span class="marquee-item">✨ Growing &amp; Mentoring Team <span class="sep"></span></span>
-      <span class="marquee-item">🧱 Design Systems <span class="sep"></span></span>
-      <!-- duplicate for loop -->
-      <span class="marquee-item">🤖 AI Design Engineer <span class="sep"></span></span>
-      <span class="marquee-item">🧩 System Thinking <span class="sep"></span></span>
-      <span class="marquee-item">🙋‍♀️ Leading Discovery &amp; Process <span class="sep"></span></span>
-      <span class="marquee-item">🎨 UI Craft <span class="sep"></span></span>
-      <span class="marquee-item">✨ Product Design <span class="sep"></span></span>
-      <span class="marquee-item">👤 UX Static &amp; Agentic <span class="sep"></span></span>
-      <span class="marquee-item">💬 Customer Research <span class="sep"></span></span>
-      <span class="marquee-item">🧭 Strategy <span class="sep"></span></span>
-      <span class="marquee-item">✨ Growing &amp; Mentoring Team <span class="sep"></span></span>
-      <span class="marquee-item">🧱 Design Systems <span class="sep"></span></span>
-    </div>
-  </div>
+
 
   <!-- SNEAK PEEK -->
   <section class="sneak">
-    <p class="sneak__label reveal">Sneak peek</p>
-    <h2 class="sneak__title reveal reveal-d1">Sneak peak of my craft &amp; leadership</h2>
+    <div class="sneak__illus-wrap">
+      <div class="sneak__illus-inner">
+        <img class="sneak__illus" src="illustration-hand.svg" alt="" aria-hidden="true" />
+      </div>
+    </div>
+    <h2 class="sneak__title reveal">Sneak peak of my craft &amp; leadership</h2>
     <div class="sneak__gallery">
       <!-- REPLACE: gallery images — your own work samples -->
       <div class="sneak__item sneak__item--tall"><img src="https://framerusercontent.com/images/bItSXFPavhU2dit81jnbKTXR0JE.jpg" alt="Work sample" loading="lazy" /></div>
