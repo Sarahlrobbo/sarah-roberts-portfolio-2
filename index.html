@@ -300,21 +300,18 @@
   <section class="testimonials">
     <div class="container">
       <div class="section-heading">
-        <span class="section-label">Kind words</span>
-        <h2 class="section-title">From people I've worked with</h2>
+        <h2 class="section-title"><em>Kind words from colleagues &amp; clients</em></h2>
       </div>
 
-      <div class="testimonials-grid">
-        <!-- REPLACE: testimonial 1 content when you have real quotes -->
+      <div class="testimonials-stack">
+
         <div class="testimonial">
           <p class="testimonial-quote">
-            "Sarah reframed the way our whole team thinks about discovery. She replaced
-            opinion-based debates with a clear, evidence-led process — and the quality
-            of our roadmap decisions changed overnight."
+            Sarah reframed the way our whole team thinks about discovery. <mark class="highlight">She replaced opinion-based debates with a clear, evidence-led process</mark> — and the quality of our roadmap decisions changed overnight.
           </p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">
-              <!-- REPLACE: testimonial avatar 1 -->
+              <!-- REPLACE: placeholder avatar — swap when new quote confirmed -->
             </div>
             <div>
               <div class="testimonial-name">Placeholder Name</div>
@@ -325,36 +322,34 @@
 
         <div class="testimonial">
           <p class="testimonial-quote">
-            "Working with Sarah meant our design team stopped solving the same problems
-            twice. The operating system she built — charter, rituals, principles —
-            made great outcomes repeatable."
+            Working with Sarah meant our design team stopped solving the same problems twice. The operating system she built — charter, rituals, principles — <mark class="highlight">made great outcomes repeatable.</mark>
           </p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">
-              <!-- REPLACE: testimonial avatar 2 -->
+              <img src="images/Quote-Holly.png" alt="Holly Feary" loading="lazy" />
             </div>
             <div>
-              <div class="testimonial-name">Placeholder Name</div>
-              <div class="testimonial-role">Role, FarmIQ</div>
+              <div class="testimonial-name">Holly Feary</div>
+              <div class="testimonial-role">Senior Product Designer, FarmIQ</div>
             </div>
           </div>
         </div>
 
         <div class="testimonial">
           <p class="testimonial-quote">
-            "Sarah's JTBD work changed how engineering thought about customer value.
-            Planning conversations now reference jobs and outcomes, not features."
+            Sarah's JTBD work changed how engineering thought about customer value. <mark class="highlight">Planning conversations now reference jobs and outcomes, not features.</mark>
           </p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">
-              <!-- REPLACE: testimonial avatar 3 -->
+              <img src="images/Quote-Todd.jpg" alt="Todd White" loading="lazy" />
             </div>
             <div>
-              <div class="testimonial-name">Placeholder Name</div>
-              <div class="testimonial-role">Role, Datapay</div>
+              <div class="testimonial-name">Todd White</div>
+              <div class="testimonial-role">Head of Product, FarmIQ</div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -444,6 +439,22 @@
         labels.forEach(l => io.observe(l));
       } else {
         labels.forEach(l => l.classList.add('in-view'));
+      }
+
+      // Animate testimonial highlighters on scroll
+      const testimonials = document.querySelectorAll('.testimonial');
+      if ('IntersectionObserver' in window && testimonials.length) {
+        const tio = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              tio.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.4 });
+        testimonials.forEach(t => tio.observe(t));
+      } else {
+        testimonials.forEach(t => t.classList.add('in-view'));
       }
     })();
   </script>
