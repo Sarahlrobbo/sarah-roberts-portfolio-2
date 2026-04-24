@@ -1044,59 +1044,77 @@ ul li, ol li {
 
 .contact-link {
   padding: var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  text-align: left;
-  background: var(--color-bg);
-  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+  text-align: center;
+  background: transparent;
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.25s var(--ease);
 }
 
 .contact-link:hover {
-  background: var(--color-card-hover);
+  background: #ffffff;
+  border-color: #ffffff;
   transform: translateY(-2px);
   opacity: 1;
 }
 
 .contact-link-label {
   font-size: var(--text-xs);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
 .contact-link-value {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 500;
   color: var(--color-text);
 }
 
 /* ---------- Footer ---------- */
 .footer {
-  padding: var(--space-7) 0;
-  border-top: 1px solid var(--color-border);
+  padding: var(--space-9) 0 var(--space-7);
+  background: var(--color-heading);
+  color: rgba(255, 255, 255, 0.85);
+  border-top: none;
+  border-radius: 50% 50% 0 0 / 80px 80px 0 0;
+  margin-top: var(--space-8);
+  position: relative;
 }
 
 .footer-inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: var(--space-5) clamp(20px, 5vw, 48px) 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: var(--text-sm);
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7);
   flex-wrap: wrap;
   gap: var(--space-4);
 }
 
 .footer-brand {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
-  color: var(--color-text);
+  font-size: var(--text-xl);
+  color: #fff;
   font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    border-radius: 50% 50% 0 0 / 40px 40px 0 0;
+    padding: var(--space-8) 0 var(--space-6);
+  }
+  .footer-inner {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 /* ---------- Project (case study) pages ---------- */
@@ -1349,12 +1367,12 @@ ul li, ol li {
 }
 
 .section-illustration img {
-  max-width: 140px;
+  max-width: 175px;
   height: auto;
 }
 
-.section-illustration.large img { max-width: 200px; }
-.section-illustration.small img { max-width: 100px; }
+.section-illustration.large img { max-width: 250px; }
+.section-illustration.small img { max-width: 125px; }
 
 /* ---------- Leadership Impact Areas ---------- */
 .impact-areas {
