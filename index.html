@@ -457,6 +457,30 @@
       } else {
         testimonials.forEach(t => t.classList.add('in-view'));
       }
+
+      // Parallax drift on testimonials as you scroll
+      if (testimonials.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const speeds = [0.12, -0.08, 0.15]; // each card drifts at a different rate
+        let ticking = false;
+        const updateParallax = () => {
+          testimonials.forEach((el, i) => {
+            const rect = el.getBoundingClientRect();
+            const viewportCentre = window.innerHeight / 2;
+            const distance = rect.top + rect.height / 2 - viewportCentre;
+            const offset = distance * (speeds[i % speeds.length]);
+            const inViewOffset = el.classList.contains('in-view') ? 0 : 40;
+            el.style.transform = `translateY(${offset + inViewOffset}px)`;
+          });
+          ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+          }
+        }, { passive: true });
+        updateParallax();
+      }
     })();
   </script>
 
