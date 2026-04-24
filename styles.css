@@ -102,7 +102,6 @@ h1, h2, h3, h4, h5, h6 {
 .section-title,
 .contact-title,
 .project-title,
-.nav-logo,
 .footer-brand,
 .projects-listing-header h1,
 .project-body h2,
@@ -199,11 +198,12 @@ ul li, ol li {
 }
 
 .nav-logo {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
   letter-spacing: -0.01em;
   justify-self: center;
+  color: var(--color-heading);
 }
 
 .nav-right {
