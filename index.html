@@ -441,18 +441,18 @@
         labels.forEach(l => l.classList.add('in-view'));
       }
 
-      // Animate testimonial highlighters on scroll
+      // Animate testimonial highlighters on scroll — staggered for visibility
       const testimonials = document.querySelectorAll('.testimonial');
       if ('IntersectionObserver' in window && testimonials.length) {
         const tio = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              // Small delay so the CSS transition is always observed, even if card starts in-view
-              setTimeout(() => entry.target.classList.add('in-view'), 150);
+              const idx = Array.from(testimonials).indexOf(entry.target);
+              setTimeout(() => entry.target.classList.add('in-view'), 200 + idx * 500);
               tio.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.35 });
+        }, { threshold: 0.2 });
         testimonials.forEach(t => tio.observe(t));
       } else {
         testimonials.forEach(t => t.classList.add('in-view'));

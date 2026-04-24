@@ -816,7 +816,7 @@ ul li, ol li {
 }
 
 .testimonial {
-  background: #FFF7E6;
+  background: #EFE9DC;
   border-radius: var(--radius-lg);
   padding: var(--space-6) var(--space-7);
   display: flex;
@@ -832,12 +832,12 @@ ul li, ol li {
   margin: 0;
 }
 
-/* Highlighter — flat pastel blue, animates width 0 → 108% on view */
+/* Highlighter — pastel blue, animates width 0 → 108% on view */
 .testimonial-quote .highlight {
   background-image: linear-gradient(
     180deg,
-    rgba(148, 184, 255, 0.55),
-    rgba(148, 184, 255, 0.55)
+    rgba(202, 220, 252, 0.75),
+    rgba(202, 220, 252, 0.75)
   );
   background-repeat: no-repeat;
   background-size: 0% 115%;
@@ -869,7 +869,7 @@ ul li, ol li {
   background: var(--color-bg-alt);
   overflow: hidden;
   flex-shrink: 0;
-  border: 2px solid #FFF7E6;
+  border: 2px solid #EFE9DC;
 }
 
 .testimonial-avatar img {
