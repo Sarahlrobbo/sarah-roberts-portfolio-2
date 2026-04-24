@@ -908,8 +908,6 @@ ul li, ol li {
 /* ---------- Brands ---------- */
 .brands {
   padding: var(--space-8) 0;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
   text-align: center;
 }
 
@@ -1044,20 +1042,20 @@ ul li, ol li {
 
 .contact-link {
   padding: var(--space-4) var(--space-6);
-  border: 1.5px solid var(--color-border);
-  border-radius: 999px;
+  border: none;
+  border-radius: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-4);
   text-align: left;
-  background: transparent;
-  transition: background 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.25s var(--ease);
+  background: #EBE9E4;
+  transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+  position: relative;
 }
 
 .contact-link:hover {
   background: #ffffff;
-  border-color: #ffffff;
   transform: translateY(-2px);
   opacity: 1;
 }
@@ -1075,6 +1073,25 @@ ul li, ol li {
   font-size: var(--text-base);
   font-weight: 400;
   color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Arrow appears on hover */
+.contact-link-value::after {
+  content: '↗';
+  display: inline-block;
+  font-size: 1em;
+  color: var(--color-text);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.contact-link:hover .contact-link-value::after {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ---------- Footer ---------- */
