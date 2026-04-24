@@ -447,11 +447,12 @@
         const tio = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('in-view');
+              // Small delay so the CSS transition is always observed, even if card starts in-view
+              setTimeout(() => entry.target.classList.add('in-view'), 150);
               tio.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.4 });
+        }, { threshold: 0.35 });
         testimonials.forEach(t => tio.observe(t));
       } else {
         testimonials.forEach(t => t.classList.add('in-view'));
