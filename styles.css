@@ -694,8 +694,12 @@ ul li, ol li {
 .bio-images {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
+  gap: var(--space-8);
   margin-top: var(--space-8);
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-5);
 }
 
 .bio-image {
@@ -760,6 +764,12 @@ ul li, ol li {
 
 /* On mobile / touch devices: always show tooltip below image and flatten tilts */
 @media (max-width: 960px) {
+  .bio-images {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+    max-width: 280px;
+  }
+
   .bio-image .img-wrap,
   .bio-image:nth-child(1) .img-wrap,
   .bio-image:nth-child(2) .img-wrap,
@@ -776,6 +786,17 @@ ul li, ol li {
     transform: none;
     opacity: 1;
     margin-top: var(--space-3);
+  }
+}
+
+/* Kill hover interactions on touch devices — they cause sticky states */
+@media (hover: none) {
+  .bio-image:hover .img-wrap {
+    transform: none;
+    box-shadow: 0 14px 30px -16px rgba(42, 49, 50, 0.25);
+  }
+  .bio-image:hover::after {
+    transform: none;
   }
 }
 
@@ -1651,10 +1672,6 @@ ul li, ol li {
 
   .contact-links {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .bio-images {
-    grid-template-columns: 1fr;
   }
 
   .hero-strip {
