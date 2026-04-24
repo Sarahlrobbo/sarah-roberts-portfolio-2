@@ -816,7 +816,7 @@ ul li, ol li {
 }
 
 .testimonial {
-  background: #EFE8D7;
+  background: #EFE9DC;
   border-radius: var(--radius-lg);
   padding: var(--space-6) var(--space-7);
   display: flex;
@@ -876,7 +876,7 @@ ul li, ol li {
   background: var(--color-bg-alt);
   overflow: hidden;
   flex-shrink: 0;
-  border: 2px solid #EFE8D7;
+  border: 2px solid #EFE9DC;
 }
 
 .testimonial-avatar img {
