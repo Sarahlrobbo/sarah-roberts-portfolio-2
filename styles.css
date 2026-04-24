@@ -152,14 +152,14 @@ ul li, ol li {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: 0 clamp(20px, 5vw, 48px);
 }
 
 .container-narrow {
   width: 100%;
   max-width: var(--max-width-content);
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: 0 clamp(20px, 5vw, 48px);
 }
 
 .section {
@@ -1669,7 +1669,7 @@ ul li, ol li {
 
   .container,
   .container-narrow {
-    padding: 0 var(--space-6);
+    padding: 0 var(--space-5);
   }
 
   .project-body,
