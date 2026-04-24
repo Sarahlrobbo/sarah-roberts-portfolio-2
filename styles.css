@@ -931,6 +931,14 @@ ul li, ol li {
   margin: 0 auto;
 }
 
+.brand-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
 .brand-logo {
   height: 36px;
   width: auto;
@@ -941,9 +949,52 @@ ul li, ol li {
   transition: opacity 0.3s var(--ease), filter 0.3s var(--ease);
 }
 
-.brand-logo:hover {
+.brand-item:hover .brand-logo {
   opacity: 1;
   filter: grayscale(0%);
+}
+
+/* Tooltip blurb */
+.brand-item::before {
+  content: attr(data-blurb);
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--color-text);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  width: max-content;
+  max-width: 280px;
+  text-align: center;
+  white-space: normal;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+  z-index: 10;
+}
+
+.brand-item::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  border: 6px solid transparent;
+  border-top-color: var(--color-text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.brand-item:hover::before,
+.brand-item:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 @media (max-width: 640px) {
@@ -953,6 +1004,13 @@ ul li, ol li {
   .brand-logo {
     height: 28px;
     max-width: 100px;
+  }
+  /* Always show brand tooltips on touch */
+  @media (hover: none) {
+    .brand-item::before,
+    .brand-item::after {
+      display: none;
+    }
   }
 }
 
