@@ -434,13 +434,43 @@
         });
       });
 
-      // Reveal impact labels on scroll
+      // -----------------------------------------------------------
+      // Leadership Impact Areas — pills burst from centre on scroll
+      // -----------------------------------------------------------
+      const impactStage = document.querySelector('.impact-stage');
       const labels = document.querySelectorAll('.impact-label');
+
+      // Calculate each pill's offset to the stage centre — so they animate
+      // from the centre outward to their final positions.
+      const setImpactOffsets = () => {
+        if (!impactStage || !labels.length) return;
+        const isWide = window.matchMedia('(min-width: 1025px)').matches;
+        const stageRect = impactStage.getBoundingClientRect();
+        const cx = stageRect.left + stageRect.width / 2;
+        const cy = stageRect.top + stageRect.height / 2;
+        labels.forEach(label => {
+          if (!isWide) {
+            label.style.removeProperty('--offset-x');
+            label.style.removeProperty('--offset-y');
+            return;
+          }
+          const r = label.getBoundingClientRect();
+          const lx = r.left + r.width / 2;
+          const ly = r.top + r.height / 2;
+          label.style.setProperty('--offset-x', (cx - lx) + 'px');
+          label.style.setProperty('--offset-y', (cy - ly) + 'px');
+        });
+      };
+      setImpactOffsets();
+      window.addEventListener('resize', setImpactOffsets);
+
       if ('IntersectionObserver' in window && labels.length) {
         const io = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('in-view');
+              setImpactOffsets();
+              const idx = Array.from(labels).indexOf(entry.target);
+              setTimeout(() => entry.target.classList.add('in-view'), idx * 60);
               io.unobserve(entry.target);
             }
           });
@@ -448,6 +478,35 @@
         labels.forEach(l => io.observe(l));
       } else {
         labels.forEach(l => l.classList.add('in-view'));
+      }
+
+      // -----------------------------------------------------------
+      // Scroll reveals — sneak peek, project cards, bio images,
+      // brand logos, contact illustration + pills
+      // -----------------------------------------------------------
+      const revealSelectors = [
+        '.sneak-peek .section-illustration',
+        '.sneak-peek .section-title',
+        '.hero-strip-img',
+        '.project-card',
+        '.bio-image',
+        '.brand-item',
+        '.contact .section-illustration',
+        '.contact-link'
+      ];
+      const revealEls = document.querySelectorAll(revealSelectors.join(','));
+      if ('IntersectionObserver' in window && revealEls.length) {
+        const rio = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              rio.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        revealEls.forEach(el => rio.observe(el));
+      } else {
+        revealEls.forEach(el => el.classList.add('in-view'));
       }
 
       // Animate testimonial highlighters on scroll — staggered for visibility
@@ -469,7 +528,8 @@
 
       // Parallax drift on testimonials as you scroll
       if (testimonials.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const speeds = [0.12, -0.08, 0.15]; // each card drifts at a different rate
+        // Reduced speeds so cards don't drift into each other
+        const speeds = [0.05, -0.03, 0.06];
         let ticking = false;
         const updateParallax = () => {
           testimonials.forEach((el, i) => {

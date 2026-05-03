@@ -811,7 +811,8 @@ ul li, ol li {
   margin: var(--space-8) auto 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-10);
+  /* Increased gap so parallax drift doesn't cause cards to overlap */
+  gap: clamp(120px, 14vw, 180px);
   padding: 0 var(--space-5);
 }
 
@@ -839,8 +840,9 @@ ul li, ol li {
   margin: 0;
 }
 
-/* Highlighter — solid pastel blue, no transparency (stays blue on any background) */
+/* Highlighter — solid pastel blue draws across the text on scroll */
 .testimonial-quote .highlight {
+  background-color: transparent; /* override <mark> default yellow */
   background-image: linear-gradient(
     180deg,
     #C7D8FF,
@@ -854,7 +856,7 @@ ul li, ol li {
   color: inherit;
   border-radius: 2px;
   transition: background-size 1.6s cubic-bezier(0.65, 0, 0.35, 1);
-  transition-delay: 0.5s;
+  transition-delay: 0.3s;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
@@ -1531,15 +1533,15 @@ ul li, ol li {
   color: var(--color-text);
   white-space: nowrap;
   z-index: 1;
-  /* animated in on scroll */
+  /* Burst from centre — JS sets --offset-x / --offset-y per pill */
   opacity: 0;
-  transform: translateY(20px) rotate(var(--tilt, 0deg));
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transform: translate(var(--offset-x, 0px), var(--offset-y, 0px)) scale(0.4) rotate(0deg);
+  transition: opacity 0.6s var(--ease), transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .impact-label.in-view {
   opacity: 1;
-  transform: translateY(0) rotate(var(--tilt, 0deg));
+  transform: translate(0, 0) scale(1) rotate(var(--tilt, 0deg));
 }
 
 .impact-label:hover {
@@ -2024,6 +2026,142 @@ ul li, ol li {
   .fade-in.delay-2 { animation-delay: 0.2s; }
   .fade-in.delay-3 { animation-delay: 0.3s; }
   .fade-in.delay-4 { animation-delay: 0.4s; }
+}
+
+/* ---------- Scroll-triggered reveals ---------- */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Sneak peek — illustration slides in from the left
+     (delay so it feels separate from the hero, not bolted onto it) */
+  .sneak-peek .section-illustration {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .sneak-peek .section-illustration.in-view {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.55s;
+  }
+
+  /* Sneak peek — title fades up AFTER the illustration */
+  .sneak-peek .section-title {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .sneak-peek .section-title.in-view {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.05s;
+  }
+
+  /* Sneak peek — image strip scales + fades in, staggered */
+  .hero-strip-img {
+    opacity: 0;
+    transform: scale(0.94) translateY(20px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    will-change: transform, opacity;
+  }
+  .hero-strip-img.in-view {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  /* Base 0.7s delay puts the strip after the hero fade-in finishes */
+  .hero-strip-img:nth-child(1).in-view { transition-delay: 0.70s; }
+  .hero-strip-img:nth-child(2).in-view { transition-delay: 0.78s; }
+  .hero-strip-img:nth-child(3).in-view { transition-delay: 0.86s; }
+  .hero-strip-img:nth-child(4).in-view { transition-delay: 0.94s; }
+
+  /* Project cards — fade up + subtle scale, staggered */
+  .project-card {
+    opacity: 0;
+    transform: translateY(50px) scale(0.97);
+    transition: opacity 0.7s var(--ease),
+                transform 0.7s var(--ease),
+                box-shadow 0.4s var(--ease);
+  }
+  .project-card.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .projects-grid .project-card:nth-child(1).in-view { transition-delay: 0.00s; }
+  .projects-grid .project-card:nth-child(2).in-view { transition-delay: 0.10s; }
+  .projects-grid .project-card:nth-child(3).in-view { transition-delay: 0.20s; }
+  .projects-grid .project-card:nth-child(4).in-view { transition-delay: 0.30s; }
+
+  /* Behind the screens — polaroids settle into their tilt + drop in */
+  .bio-image {
+    opacity: 0;
+    transition: opacity 0.5s var(--ease);
+  }
+  .bio-image.in-view {
+    opacity: 1;
+  }
+  .bio-image:nth-child(1) .img-wrap,
+  .bio-image:nth-child(2) .img-wrap,
+  .bio-image:nth-child(3) .img-wrap {
+    transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s var(--ease);
+  }
+  /* Pre-reveal: flat + lifted up */
+  .bio-image:not(.in-view):nth-child(1) .img-wrap,
+  .bio-image:not(.in-view):nth-child(2) .img-wrap,
+  .bio-image:not(.in-view):nth-child(3) .img-wrap {
+    transform: rotate(0deg) translateY(-30px);
+  }
+  /* Post-reveal: settle into the tilted "tossed" positions (existing values preserved) */
+  .bio-image.in-view:nth-child(2) .img-wrap { transition-delay: 0.12s; }
+  .bio-image.in-view:nth-child(3) .img-wrap { transition-delay: 0.24s; }
+
+  /* Brand logos — fade in stagger */
+  .brand-item {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  }
+  .brand-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .brands-row .brand-item:nth-child(1).in-view { transition-delay: 0.00s; }
+  .brands-row .brand-item:nth-child(2).in-view { transition-delay: 0.06s; }
+  .brands-row .brand-item:nth-child(3).in-view { transition-delay: 0.12s; }
+  .brands-row .brand-item:nth-child(4).in-view { transition-delay: 0.18s; }
+  .brands-row .brand-item:nth-child(5).in-view { transition-delay: 0.24s; }
+  .brands-row .brand-item:nth-child(6).in-view { transition-delay: 0.30s; }
+
+  /* Let's chat — illustration slides in from the right */
+  .contact .section-illustration {
+    opacity: 0;
+    transform: translateX(28px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  }
+  .contact .section-illustration.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Let's chat — pills stagger up */
+  .contact-link {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .contact-link.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Layered transitions: reveal first, then keep hover behaviour */
+  .contact-link {
+    transition: opacity 0.55s var(--ease),
+                transform 0.55s var(--ease),
+                background 0.25s var(--ease);
+  }
+  .contact-link.in-view:hover {
+    transform: translateY(-2px);
+  }
+  .contact-links .contact-link:nth-child(1).in-view { transition-delay: 0.00s; }
+  .contact-links .contact-link:nth-child(2).in-view { transition-delay: 0.10s; }
+  .contact-links .contact-link:nth-child(3).in-view { transition-delay: 0.20s; }
 }
 
 @keyframes fadeIn {
