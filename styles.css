@@ -165,6 +165,12 @@ ul li, ol li {
   padding: var(--space-9) 0;
 }
 
+/* Extra breathing room above the projects grid so it doesn't compete
+   with the Sneak Peek section for attention on initial load */
+#projects {
+  padding-top: clamp(80px, 10vw, 160px);
+}
+
 .section-sm {
   padding: var(--space-7) 0;
 }
@@ -1985,7 +1991,7 @@ ul li, ol li {
 @media (prefers-reduced-motion: no-preference) {
 
   /* Sneak peek — illustration slides in from the left
-     (delay so it feels separate from the hero, not bolted onto it) */
+     (small delay so it feels separate from the hero, not bolted on) */
   .sneak-peek .section-illustration {
     opacity: 0;
     transform: translateX(-32px);
@@ -1994,19 +2000,7 @@ ul li, ol li {
   .sneak-peek .section-illustration.in-view {
     opacity: 1;
     transform: translateX(0);
-    transition-delay: 0.55s;
-  }
-
-  /* Sneak peek — title fades up AFTER the illustration */
-  .sneak-peek .section-title {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-  }
-  .sneak-peek .section-title.in-view {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 1.05s;
+    transition-delay: 0.3s;
   }
 
   /* Sneak peek — image strip scales + fades in, staggered */
@@ -2020,11 +2014,10 @@ ul li, ol li {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
-  /* Base 0.7s delay puts the strip after the hero fade-in finishes */
-  .hero-strip-img:nth-child(1).in-view { transition-delay: 0.70s; }
-  .hero-strip-img:nth-child(2).in-view { transition-delay: 0.78s; }
-  .hero-strip-img:nth-child(3).in-view { transition-delay: 0.86s; }
-  .hero-strip-img:nth-child(4).in-view { transition-delay: 0.94s; }
+  .hero-strip-img:nth-child(1).in-view { transition-delay: 0.40s; }
+  .hero-strip-img:nth-child(2).in-view { transition-delay: 0.46s; }
+  .hero-strip-img:nth-child(3).in-view { transition-delay: 0.52s; }
+  .hero-strip-img:nth-child(4).in-view { transition-delay: 0.58s; }
 
   /* Project cards — fade up + subtle scale, staggered */
   .project-card {
