@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Font Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  body {
+    background: #F5F5F5;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+  }
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 16px;
+  }
+  .panel {
+    background: #F5F5F5;
+    padding: 60px 48px;
+    margin-bottom: 12px;
+  }
+  .divider {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 40px 0;
+  }
+  .hero-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: #2B35AB;
+    font-weight: 300;
+    display: block;
+  }
+
+  /* BEFORE — current values */
+  .before {
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+
+  /* AFTER — proposed values */
+  .after {
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+</style>
+</head>
+<body>
+
+  <div class="panel">
+    <div class="label">Current (line-height 0.95 · letter-spacing −0.03em)</div>
+    <span class="hero-text before">Design Lead<br>Insight to impact</span>
+  </div>
+
+  <hr class="divider">
+
+  <div class="panel">
+    <div class="label">Proposed (line-height 1.05 · letter-spacing −0.01em)</div>
+    <span class="hero-text after">Design Lead<br>Insight to impact</span>
+  </div>
+
+</body>
+</html>
