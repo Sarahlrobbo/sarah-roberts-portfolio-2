@@ -1462,7 +1462,7 @@ ul li, ol li {
   /* Use the full container width so side pills have more room */
   max-width: var(--max-width);
   margin: 0 auto;
-  min-height: 720px;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1535,14 +1535,15 @@ ul li, ol li {
   transform: translate(var(--base-x, 0px), var(--base-y, 0px)) scale(1.04) rotate(0deg);
 }
 
-/* Six pills around the centre — top, right-upper, right-lower, bottom, left-lower, left-upper.
-   Pills hug the outer edges of the stage so the centre title/illustration has clear space. */
-.impact-label.il1 { top: 2%;     left: 50%;  --base-x: -50%; --tilt: -3deg; } /* TOP */
-.impact-label.il2 { top: 28%;    right: 0;                   --tilt: 5deg;  } /* RIGHT-UPPER */
-.impact-label.il3 { bottom: 28%; right: 0;                   --tilt: -4deg; } /* RIGHT-LOWER */
-.impact-label.il4 { bottom: 2%;  left: 50%;  --base-x: -50%; --tilt: 4deg;  } /* BOTTOM */
-.impact-label.il5 { bottom: 28%; left: 0;                    --tilt: 6deg;  } /* LEFT-LOWER */
-.impact-label.il6 { top: 28%;    left: 0;                    --tilt: -7deg; } /* LEFT-UPPER */
+/* Six pills — three down the left, three down the right, flanking the centre.
+   --base-y on the middle pills handles vertical centring so the burst animation
+   still works. Tilts alternate (− + −) on each side, mirrored across the centre. */
+.impact-label.il1 { top: 20%;    left: 0;                    --tilt: -6deg; } /* LEFT-TOP */
+.impact-label.il2 { top: 50%;    left: 0;  --base-y: -50%;   --tilt: 5deg;  } /* LEFT-MIDDLE */
+.impact-label.il3 { bottom: 20%; left: 0;                    --tilt: -4deg; } /* LEFT-BOTTOM */
+.impact-label.il4 { top: 20%;    right: 0;                   --tilt: 6deg;  } /* RIGHT-TOP */
+.impact-label.il5 { top: 50%;    right: 0; --base-y: -50%;   --tilt: -5deg; } /* RIGHT-MIDDLE */
+.impact-label.il6 { bottom: 20%; right: 0;                   --tilt: 4deg;  } /* RIGHT-BOTTOM */
 
 /* On narrower screens, reflow pills into a centred column so nothing overlaps.
    Bumped the breakpoint up to 1200px because the longer impact statements
@@ -1550,23 +1551,28 @@ ul li, ol li {
 @media (max-width: 1200px) {
   .impact-stage {
     flex-direction: column;
+    align-items: center;
     min-height: auto;
     padding: var(--space-4) 0;
-    gap: var(--space-5);
+    /* Generous gap so the rotated pill corners don't kiss each other */
+    gap: 56px;
   }
   .impact-center {
     order: -1;
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-6);
   }
   .impact-label {
     position: static;
     display: inline-block;
-    margin: 4px;
+    margin: 0;
     /* Override desktop transform — keep simple translate-up-then-settle on mobile */
     transform: translateY(20px) rotate(var(--tilt, 0deg));
-    white-space: normal;
+    /* Keep each pill on a single line on mobile — scale font down on
+       narrow viewports so the longest impact statements still fit */
+    white-space: nowrap;
     text-align: center;
-    max-width: 360px;
+    font-size: clamp(0.65rem, 2.4vw, 0.875rem);
+    padding: 8px 14px;
   }
   .impact-label.in-view {
     transform: translateY(0) rotate(var(--tilt, 0deg));
