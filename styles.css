@@ -1459,7 +1459,8 @@ ul li, ol li {
 
 .impact-stage {
   position: relative;
-  max-width: 1100px;
+  /* Use the full container width so side pills have more room */
+  max-width: var(--max-width);
   margin: 0 auto;
   min-height: 720px;
   display: flex;
@@ -1486,7 +1487,12 @@ ul li, ol li {
   margin-bottom: var(--space-3);
 }
 
-/* Floating pills — each at its own angle, positioned around the centre */
+/* Floating pills — each at its own angle, positioned around the centre.
+   --base-x is -50% for top/bottom pills that need horizontal centring;
+   --offset-x / --offset-y are set by JS so each pill bursts from the
+   stage centre to its final position when scrolled into view.
+   Entry is a one-shot keyframe animation so the snappy hover transition
+   below isn't overridden by the bouncy entry timing. */
 .impact-label {
   position: absolute;
   padding: 10px 22px;
@@ -1496,54 +1502,52 @@ ul li, ol li {
   color: var(--color-text);
   white-space: nowrap;
   z-index: 1;
-  /* Burst from centre — JS sets --offset-x / --offset-y per pill */
   opacity: 0;
-  transform: translate(var(--offset-x, 0px), var(--offset-y, 0px)) scale(0.4) rotate(0deg);
-  transition: opacity 0.6s var(--ease), transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
+  /* Snappy transition for the hover-straighten + colour change */
+  transition: transform 0.35s var(--ease), background 0.25s var(--ease);
 }
 
 .impact-label.in-view {
   opacity: 1;
-  transform: translate(0, 0) scale(1) rotate(var(--tilt, 0deg));
+  transform: translate(var(--base-x, 0px), var(--base-y, 0px)) scale(1) rotate(var(--tilt, 0deg));
+  animation: impactBurst 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.impact-label:hover {
+@keyframes impactBurst {
+  0% {
+    opacity: 0;
+    transform: translate(
+      calc(var(--base-x, 0px) + var(--offset-x, 0px)),
+      calc(var(--base-y, 0px) + var(--offset-y, 0px))
+    ) scale(0.4) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(var(--base-x, 0px), var(--base-y, 0px)) scale(1) rotate(var(--tilt, 0deg));
+  }
+}
+
+/* Hover — straighten the pill and lift it slightly, matching
+   the polaroid hover behaviour in Behind the screens */
+.impact-label.in-view:hover {
   background: #B8CCFB;
+  transform: translate(var(--base-x, 0px), var(--base-y, 0px)) scale(1.04) rotate(0deg);
 }
 
-/* Scattered positions forming a circle around the centre + unique tilts */
-/* Top row */
-.impact-label.il10 { top: 4%;   left: 18%;  --tilt: 4deg;  } /* Design Systems — top-left */
-.impact-label.il1  { top: 0%;   left: 46%;  --tilt: -3deg; } /* Product Design — top-centre */
-.impact-label.il2  { top: 4%;   right: 14%; --tilt: 6deg;  } /* UX Static & Agentic — top-right */
+/* Six pills around the centre — top, right-upper, right-lower, bottom, left-lower, left-upper.
+   Pills hug the outer edges of the stage so the centre title/illustration has clear space. */
+.impact-label.il1 { top: 2%;     left: 50%;  --base-x: -50%; --tilt: -3deg; } /* TOP */
+.impact-label.il2 { top: 28%;    right: 0;                   --tilt: 5deg;  } /* RIGHT-UPPER */
+.impact-label.il3 { bottom: 28%; right: 0;                   --tilt: -4deg; } /* RIGHT-LOWER */
+.impact-label.il4 { bottom: 2%;  left: 50%;  --base-x: -50%; --tilt: 4deg;  } /* BOTTOM */
+.impact-label.il5 { bottom: 28%; left: 0;                    --tilt: 6deg;  } /* LEFT-LOWER */
+.impact-label.il6 { top: 28%;    left: 0;                    --tilt: -7deg; } /* LEFT-UPPER */
 
-/* Upper sides */
-.impact-label.il9  { top: 30%;  left: 4%;   --tilt: -7deg; } /* Customer Research — left */
-.impact-label.il3  { top: 30%;  right: 4%;  --tilt: -4deg; } /* UI Craft — right */
-
-/* Lower sides */
-.impact-label.il8  { top: 58%;  left: 8%;   --tilt: 5deg;  } /* Strategy — left */
-.impact-label.il4  { top: 58%;  right: 4%;  --tilt: 7deg;  } /* System Thinking — right */
-
-/* Bottom row */
-.impact-label.il7  { bottom: 6%;  left: 16%;  --tilt: -6deg; } /* Growing & Mentoring — bottom-left */
-.impact-label.il5  { bottom: 0%;  left: 42%;  --tilt: -5deg; } /* AI Design Engineer — bottom-centre */
-.impact-label.il6  { bottom: 6%;  right: 6%;  --tilt: 4deg;  } /* Leading Discovery — bottom-right */
-
-/* Staggered animation delays */
-.impact-label.il1.in-view  { transition-delay: 0.05s; }
-.impact-label.il2.in-view  { transition-delay: 0.12s; }
-.impact-label.il3.in-view  { transition-delay: 0.20s; }
-.impact-label.il4.in-view  { transition-delay: 0.28s; }
-.impact-label.il5.in-view  { transition-delay: 0.35s; }
-.impact-label.il6.in-view  { transition-delay: 0.42s; }
-.impact-label.il7.in-view  { transition-delay: 0.50s; }
-.impact-label.il8.in-view  { transition-delay: 0.58s; }
-.impact-label.il9.in-view  { transition-delay: 0.65s; }
-.impact-label.il10.in-view { transition-delay: 0.72s; }
-
-/* On narrower screens, reflow pills into a centred column so nothing overlaps */
-@media (max-width: 1024px) {
+/* On narrower screens, reflow pills into a centred column so nothing overlaps.
+   Bumped the breakpoint up to 1200px because the longer impact statements
+   need more lateral room than the old skill pills did. */
+@media (max-width: 1200px) {
   .impact-stage {
     flex-direction: column;
     min-height: auto;
@@ -1558,15 +1562,16 @@ ul li, ol li {
     position: static;
     display: inline-block;
     margin: 4px;
+    /* Override desktop transform — keep simple translate-up-then-settle on mobile */
     transform: translateY(20px) rotate(var(--tilt, 0deg));
+    white-space: normal;
+    text-align: center;
+    max-width: 360px;
   }
   .impact-label.in-view {
     transform: translateY(0) rotate(var(--tilt, 0deg));
-  }
-  /* Container to centre the flowing pills */
-  .impact-stage::after {
-    content: '';
-    display: none;
+    /* No burst-from-centre on mobile — keep the simple settle */
+    animation: none;
   }
 }
 
@@ -1575,6 +1580,10 @@ ul li, ol li {
     opacity: 1;
     transform: rotate(var(--tilt, 0deg));
     transition: none;
+    animation: none;
+  }
+  .impact-label.in-view {
+    animation: none;
   }
 }
 

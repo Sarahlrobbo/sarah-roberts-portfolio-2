@@ -170,17 +170,13 @@
     <div class="container">
       <div class="impact-stage">
 
-        <!-- Floating labels -->
-        <span class="impact-label il1">💡 Product Design</span>
-        <span class="impact-label il2">📐 UX Static &amp; Agentic</span>
-        <span class="impact-label il3">✏️ UI Craft</span>
-        <span class="impact-label il4">🧩 System Thinking</span>
-        <span class="impact-label il5">🤖 AI Design Engineer</span>
-        <span class="impact-label il6">🔍🧪 Leading Discovery &amp; Process</span>
-        <span class="impact-label il7">🌱 Growing &amp; Mentoring Team</span>
-        <span class="impact-label il8">🎯 Strategy</span>
-        <span class="impact-label il9">🧑‍🤝‍🧑 Customer Research</span>
-        <span class="impact-label il10">🛠️ Design Systems</span>
+        <!-- Floating impact statements — six around the centre -->
+        <span class="impact-label il1">🌱 Designers grow into leaders</span>
+        <span class="impact-label il2">🎯 Evidence-led customer jobs replace feature lists</span>
+        <span class="impact-label il3">💡 Research compounds into shared team intuition</span>
+        <span class="impact-label il4">📊 Outcomes get measured, not outputs</span>
+        <span class="impact-label il5">🧱 Design systems enable craft at scale</span>
+        <span class="impact-label il6">✨ AI accelerates discovery without flattening insight</span>
 
         <!-- Central illustration and title -->
         <div class="impact-center">
@@ -413,19 +409,33 @@
       const labels = document.querySelectorAll('.impact-label');
 
       // Calculate each pill's offset to the stage centre — so they animate
-      // from the centre outward to their final positions.
+      // from the centre outward to their final positions. We zero out any
+      // previous offset before measuring, otherwise getBoundingClientRect
+      // would reflect the offset position, not the layout position.
       const setImpactOffsets = () => {
         if (!impactStage || !labels.length) return;
-        const isWide = window.matchMedia('(min-width: 1025px)').matches;
+        const isWide = window.matchMedia('(min-width: 1201px)').matches;
+        if (!isWide) {
+          labels.forEach(l => {
+            l.style.removeProperty('--offset-x');
+            l.style.removeProperty('--offset-y');
+          });
+          return;
+        }
+        // Reset offsets so we measure layout positions
+        labels.forEach(l => {
+          l.style.setProperty('--offset-x', '0px');
+          l.style.setProperty('--offset-y', '0px');
+        });
+        // Force reflow before measuring
+        void impactStage.offsetWidth;
         const stageRect = impactStage.getBoundingClientRect();
         const cx = stageRect.left + stageRect.width / 2;
         const cy = stageRect.top + stageRect.height / 2;
         labels.forEach(label => {
-          if (!isWide) {
-            label.style.removeProperty('--offset-x');
-            label.style.removeProperty('--offset-y');
-            return;
-          }
+          // Skip pills that have already revealed — their final transform
+          // makes the bounding rect meaningless for offset calculation.
+          if (label.classList.contains('in-view')) return;
           const r = label.getBoundingClientRect();
           const lx = r.left + r.width / 2;
           const ly = r.top + r.height / 2;
@@ -440,9 +450,8 @@
         const io = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              setImpactOffsets();
               const idx = Array.from(labels).indexOf(entry.target);
-              setTimeout(() => entry.target.classList.add('in-view'), idx * 60);
+              setTimeout(() => entry.target.classList.add('in-view'), idx * 100);
               io.unobserve(entry.target);
             }
           });
